@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
+import 'ride_booking_screen.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/localization/app_localizations.dart';
 
@@ -208,12 +209,18 @@ class _LocationScreenState extends State<LocationScreen> {
             child: SafeArea(
               child: SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
+                  child: ElevatedButton(
                   onPressed: () {
+                    // Return selected location and navigate to ride booking
+                    final selectedLocation = 'Road No. 3, Hyder Nagar';
+                    Navigator.pop(context, selectedLocation);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => const LoginScreen(),
+                        builder: (_) => RideBookingScreen(
+                          pickupLocation: "Hotel Grand Sitara, Banja...",
+                          dropLocation: selectedLocation,
+                        ),
                       ),
                     );
                   },

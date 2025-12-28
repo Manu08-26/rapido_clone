@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'settings_screen.dart';
 import 'history_screen.dart';
+import 'map_location_screen.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/localization/app_localizations.dart';
 
@@ -46,8 +47,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
             localizations.services,
             style: TextStyle(
               color: _appTheme.textColor,
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
           actions: [
@@ -62,139 +63,178 @@ class _ServicesScreenState extends State<ServicesScreen> {
             const SizedBox(width: 8),
           ],
         ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Services Grid
-            Row(
-              children: [
-                Expanded(
-                  child: _serviceCard(
-                    context,
-                    title: 'Cab',
-                    description: 'Quick and reliable ride service.',
-                    icon: Icons.local_taxi,
-                    color: _appTheme.brandRed,
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: _serviceCard(
-                    context,
-                    title: 'Parcel',
-                    description: 'Secure and fast deliveries.',
-                    icon: Icons.inventory_2,
-                    color: _appTheme.brandRed,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Row(
-              children: [
-                Expanded(
-                  child: _serviceCard(
-                    context,
-                    title: 'Freight',
-                    description: 'Efficient and reliable goods transport.',
-                    icon: Icons.local_shipping,
-                    color: _appTheme.brandRed,
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: _serviceCard(
-                    context,
-                    title: 'Ambulance',
-                    description: 'Emergency medical transport.',
-                    icon: Icons.medical_services,
-                    color: _appTheme.brandRed,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            // More Services Coming Soon
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
-                color: _appTheme.iconBgColor,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Column(
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Services Grid
+              Row(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                    decoration: BoxDecoration(
-                      color: _appTheme.cardColor,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text(
-                      'MORE SERVICES',
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                        color: _appTheme.textColor,
-                        letterSpacing: 1,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'COMING SOON',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: _appTheme.brandRed,
+                  Expanded(
+                    child: _serviceCard(
+                      context,
+                      title: 'Cab',
+                      description: 'Quick and reliable ride service.',
+                      icon: Icons.local_taxi,
+                      onTap: () {
+                        // Navigate to home screen
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const HomeScreen(),
+                          ),
+                        );
+                      },
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                    decoration: BoxDecoration(
-                      color: _appTheme.cardColor,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Text(
-                      'STAY TUNED',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: _appTheme.textColor,
-                      ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: _serviceCard(
+                      context,
+                      title: 'Parcel',
+                      description: 'Secure and fast deliveries.',
+                      icon: Icons.inventory_2,
+                      onTap: () {
+                        // Navigate to home screen
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const HomeScreen(),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],
               ),
-            ),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Text(
-                  'More Services',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: _appTheme.brandRed,
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: _serviceCard(
+                      context,
+                      title: 'Freight',
+                      description: 'Efficient and reliable goods transport.',
+                      icon: Icons.local_shipping,
+                      onTap: () {
+                        // Navigate to home screen
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const HomeScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: _serviceCard(
+                      context,
+                      title: 'Ambulance',
+                      description: 'Emergency medical transport.',
+                      icon: Icons.medical_services,
+                      onTap: () {
+                        // Navigate to map location screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const MapLocationScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              // More Services Coming Soon
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: _appTheme.brandRed.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: _appTheme.brandRed.withOpacity(0.3),
+                    width: 1,
                   ),
                 ),
-                const SizedBox(width: 8),
-                Text(
-                  'Coming soon',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: _appTheme.textGrey,
-                  ),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: _appTheme.cardColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        'MORE SERVICES',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: _appTheme.textColor,
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'COMING SOON',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: _appTheme.brandRed,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: _appTheme.textColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        'STAY TUNED',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: _appTheme.cardColor,
+                          letterSpacing: 1,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'More Services',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: _appTheme.brandRed,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    'Coming soon',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: _appTheme.textGrey,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-        ),
-      bottomNavigationBar: _buildBottomNav(context, 1),
+        bottomNavigationBar: _buildBottomNav(context, 1),
       ),
     );
   }
@@ -204,58 +244,77 @@ class _ServicesScreenState extends State<ServicesScreen> {
     required String title,
     required String description,
     required IconData icon,
-    required Color color,
+    required VoidCallback onTap,
   }) {
-    final AppTheme theme = AppTheme();
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: theme.cardColor,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: theme.dividerColor, width: 1),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 60,
-            decoration: BoxDecoration(
-              color: theme.iconBgColor,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(icon, size: 48, color: color),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: color,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            description,
-            style: TextStyle(
-              fontSize: 12,
-              color: theme.textGrey,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-              width: 32,
-              height: 32,
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: _appTheme.cardColor,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: _appTheme.dividerColor, width: 1),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Icon/Image Container
+            Container(
+              height: 120,
+              width: double.infinity,
               decoration: BoxDecoration(
-                color: theme.iconBgColor,
-                shape: BoxShape.circle,
+                color: _appTheme.iconBgColor,
+                borderRadius: BorderRadius.circular(12),
               ),
-              child: Icon(Icons.arrow_forward_ios, size: 16, color: theme.textColor),
+              child: Center(
+                child: Icon(
+                  icon,
+                  size: 64,
+                  color: _appTheme.brandRed,
+                ),
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 12),
+            // Service Title
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: _appTheme.brandRed,
+              ),
+            ),
+            const SizedBox(height: 4),
+            // Service Description
+            Text(
+              description,
+              style: TextStyle(
+                fontSize: 12,
+                color: _appTheme.textGrey,
+                height: 1.4,
+              ),
+            ),
+            const SizedBox(height: 12),
+            // Navigation Arrow
+            Align(
+              alignment: Alignment.centerRight,
+              child: Container(
+                width: 32,
+                height: 32,
+                decoration: BoxDecoration(
+                  color: _appTheme.brandRed,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 16,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -281,7 +340,10 @@ class _ServicesScreenState extends State<ServicesScreen> {
         unselectedItemColor: _appTheme.textGrey,
         onTap: (index) {
           if (index == 0) {
-            Navigator.popUntil(context, (route) => route.isFirst);
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (_) => const HomeScreen()),
+            );
           } else if (index == 2) {
             Navigator.push(
               context,
@@ -316,4 +378,3 @@ class _ServicesScreenState extends State<ServicesScreen> {
     );
   }
 }
-

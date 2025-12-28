@@ -10,6 +10,7 @@ import 'services_screen.dart';
 import 'settings_screen.dart';
 import 'history_screen.dart';
 import 'map_location_screen.dart';
+import 'ride_booking_screen.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/localization/app_localizations.dart';
 
@@ -453,10 +454,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (selectedService == "Ride" || selectedService == "Intercity") ...[
                         InkWell(
                           onTap: () {
+                            // Navigate directly to ride booking screen
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) => const LocationScreen(),
+                                builder: (_) => const RideBookingScreen(
+                                  pickupLocation: "Hotel Grand Sitara, Banja...",
+                                ),
                               ),
                             );
                           },
@@ -494,12 +498,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         // Recent Location Card
                         InkWell(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => const LocationScreen(),
-                              ),
-                            );
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (_) => const LocationScreen(),
+                            //   ),
+                            // );
                           },
                           child: Container(
                             padding: const EdgeInsets.all(16),

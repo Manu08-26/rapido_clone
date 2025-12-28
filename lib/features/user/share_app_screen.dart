@@ -12,7 +12,7 @@ class ShareAppScreen extends StatefulWidget {
 
 class _ShareAppScreenState extends State<ShareAppScreen> {
   final AppTheme _appTheme = AppTheme();
-  const String shareLink = "https://play.google.com/store/apps/details?id=com.taxidouser&hl=en-IN";
+  final String shareLink = "https://play.google.com/store/apps/details?id=com.taxidouser&hl=en-IN";
 
   @override
   void initState() {
